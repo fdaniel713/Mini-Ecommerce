@@ -6,12 +6,14 @@ import { ListProducts } from "./components/ListProducts";
 
 const App = () => {
   return (
-    <Container>
-      <div className="App">
-        <HeaderApp />
-        <ListProducts />
-      </div>
-    </Container>
+    <>
+      <HeaderApp />
+      <Container>
+        <div className="App">
+          <ListProducts />
+        </div>
+      </Container>
+    </>
   );
 };
 

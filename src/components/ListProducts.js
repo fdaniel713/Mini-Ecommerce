@@ -7,10 +7,15 @@ export const ListProducts = () => {
   const products = json.products;
 
   return (
-    <Row>
-      {products.map((product, index) => (
-        <Product key={index} item={product} />
-      ))}
+   
+    <Row xs={4}>
+      {products.length < 0 ? (
+        <div>
+          <p>Cargando productos... </p>
+        </div>
+      ) : (
+        products.map((product, index) => <Product key={index} item={product} />)
+      )}
     </Row>
   );
 };
