@@ -1,17 +1,23 @@
 import React from "react";
-import { Col, Row, Card, Button, Badge } from "react-bootstrap";
-import "../assets/css/styles.css";
+import { Col, Card, Row, Button, Badge } from "react-bootstrap";
+import { saveLastInterestProduct } from "../../app/Services/storageServices";
+import db from '../../app/db/db';
+import "../../assets/css/styles.css";
 
-const styles = {
-    fontSize: "15px",
-   
-  };
   
   export const Product = ({ item }) => {
-   
     const { title, image, price, description, category } = item;
-    return (
-      <div className="col-lg-4 d-flex align-items-stretch">
+
+  const addProductToCart = ({title, price, category}) => {
+    db.cart.add({
+      title: title,
+      price: price,
+      category: category
+    })
+  }
+
+  return (
+    <div className="col-lg-4 d-flex align-items-stretch">
       <Card style={{ marginBottom: "15px", padding: 10 }}>
         <Row>
           <Col xs={8}>
@@ -34,15 +40,15 @@ const styles = {
         </Card.Body>
         <Row>
           <Col>
-            <Button  variant="warning">Agregar al carrito</Button>
+            <Button onClick={() => addProductToCart(item) } variant="warning">Agregar al carrito</Button>
           </Col>
           <Col>
-            <Button variant="primary">
+            <Button onClick={() => saveLastInterestProduct(title) } variant="primary">
               Precio <Badge bg="secondary">${price}</Badge>
             </Button>
           </Col>
         </Row>
       </Card>
     </div>
-    );
-  };
+  );
+};
