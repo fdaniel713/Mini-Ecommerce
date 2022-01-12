@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import { getAllProducts } from "../../app/Services/productServices";
+import { getAllProducts } from "../../app/Services/productCartServices";
 
 
 export const DetailCart = () => {
