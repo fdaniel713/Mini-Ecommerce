@@ -1,32 +1,29 @@
 import { useLiveQuery } from "dexie-react-hooks";
 import React, { useEffect, useState } from "react";
 import { NavDropdown, Nav, Navbar } from 'react-bootstrap';
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import db from "../../app/db/db";
 import { ShoppingCartItem } from "./shoppingCardItem";
 
 export const ShoppingCart = () => {
 
-  const [productsCart, setProductsCart] = useState([])
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const list= useSelector((state) => state.cartReducer.list)
+
   const getTotalPrice = () => {
-    const total = productsCart?.reduce((totalPrice, currentProduct) => {
+    const total = list?.reduce((totalPrice, currentProduct) => {
       return totalPrice + currentProduct.price
     },0)
     setTotalPrice(total)
   }
 
-  useLiveQuery(async () => {
-    const productsDB = await db.cart.toArray()
-    setProductsCart(productsDB)
-  },[])
-
   useEffect(() => {
-    if(productsCart.length > 0) {
+    if(list.length > 0) {
       getTotalPrice()
     }
-  },[productsCart])
+  },[list])
 
   return (
     <>
@@ -38,7 +35,7 @@ export const ShoppingCart = () => {
             title="Carrito"
             menuVariant="dark"
           >
-            {productsCart?.map((product) => {
+            {list?.map((product) => {
               return <ShoppingCartItem key={product.id} item={product} />
             })}
             <NavDropdown.Divider />

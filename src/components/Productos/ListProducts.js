@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Row } from "react-bootstrap";
-import { getAllProducts } from "../../app/Services/productsService";
+import { useSelector } from "react-redux";
 import { Product } from "./Product";
 
 export const ListProducts = () => {
-  const [products, setProducts] = useState([])
-  useEffect(() => {
-    getAllProducts()
-    .then(data => setProducts(data))
-  },[])
+
+ const products= useSelector((state) => state.productsReducer.products);
+ 
+
 
   return (
 

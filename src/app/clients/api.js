@@ -46,6 +46,6 @@ const api= {
     get: (url)=> get(url),
     post: (url,body)=> post (url,body),
     put: (url, body) => put ( url, body),
-    delete: (url) => delet(url)
+    delete: (url) => delet(url) 
 }
 export default api;

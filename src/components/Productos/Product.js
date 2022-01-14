@@ -4,17 +4,17 @@ import { saveLastInterestProduct } from "../../app/Services/storageServices";
 import db from '../../app/db/db';
 import "../../assets/css/styles.css";
 import { getProductById } from "../../app/Services/productCartServices";
+import { useDispatch } from "react-redux";
 
   
   export const Product = ({ item }) => {
     const { title, image, price, description, category,id } = item;
 
-  const addProductToCart = ({title, price, category}) => {
-    db.cart.add({
-      title: title,
-      price: price,
-      category: category
-    })
+    const dispacher = useDispatch();
+
+  const addProductToCart = (item) => {
+   dispacher(addProductToCart(item))
+    
   }
 
   const handleClickPrductCard =(idProduct)=>{

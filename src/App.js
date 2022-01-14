@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { HeaderApp } from "./components/HeaderApp";
 import { Home } from "./views/home";
