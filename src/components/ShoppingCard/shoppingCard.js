@@ -11,7 +11,7 @@ export const ShoppingCart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const getTotalPrice = () => {
-    const total = productsCart?.reduce((totalPrice, currentProduct) => {
+    const total = productsCart ?.reduce((totalPrice, currentProduct) => {
       return totalPrice + currentProduct.price
     },0)
     setTotalPrice(total)
@@ -43,7 +43,7 @@ export const ShoppingCart = () => {
             })}
             <NavDropdown.Divider />
             <NavDropdown.Item>
-              <Link to={"/purchase"}> Total: ${totalPrice}  </Link>
+              <Link to={"/purchase"}> Total: {totalPrice}  </Link>
               </NavDropdown.Item>
           </NavDropdown>
         </Nav>

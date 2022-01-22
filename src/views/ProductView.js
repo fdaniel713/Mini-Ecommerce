@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProductById } from '../app/Services/productServices';
+import { getProductById } from '../app/Services/productsCartServices';
 
 
 export const ProductView = ({ match }) => {
@@ -24,6 +24,7 @@ export const ProductView = ({ match }) => {
         </div>
 
     )
+    
 
 
 }

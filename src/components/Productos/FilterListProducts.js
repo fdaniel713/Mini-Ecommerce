@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
-import { getAllProducts } from "../../app/Services/productService";
+import {  getProductsByCategories } from "../../app/Services/productService";
 import { Product } from "./Product";
 
-export const ListProducts = () => {
-  const [products, setProducts] = useState([]);
+export const FilterListProducts = ({category}) => {
+  const [products, setProducts] = useState([])
 
-  useEffect(()=> {
-    getAllProducts()
+  useEffect(() => {
+    getProductsByCategories(category)
     .then(data => setProducts(data))
-  },[])
+  },[category])
 
   return (
-   
+
+
     <Row xs={4}>
       {products.length < 0 ? (
         <div>
